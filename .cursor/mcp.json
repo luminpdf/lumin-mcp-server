@@ -1,0 +1,10 @@
+{
+    "mcpServers": {
+        "lumin": {
+            "command": "node",
+            "args": [
+                "./src/cursor-mcp.cjs"
+            ]
+        }
+    }
+}

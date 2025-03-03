@@ -64,3 +64,14 @@ Send a signature request with the following details:
 ## API Documentation
 
 For more information about the Lumin PDF API, visit the [Lumin PDF API Documentation](https://developers.luminpdf.com/api/).
+
+## Usage with Cursor
+### Environment Configuration
+
+Create a `.env` file in the root directory with the following configuration:
+
+```
+LUMIN_API_KEY=your-lumin-api-key
+```
+
+I tried using the normal index.js file with cursor MCP, but it was not working. So I made the cursor-mcp.cjs file. Its possible the index.js file was not working due to bad path in mcp.json though
