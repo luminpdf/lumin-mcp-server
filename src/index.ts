@@ -91,7 +91,8 @@ server.tool(
     const userInfoText = `Lumin User Information:
     - ID: ${id}
     - Name: ${name}
-    - Email: ${email}`;
+    - Email: ${email}
+    - API Endpoint: ${LUMIN_API_BASE}`;
 
     return {
       content: [

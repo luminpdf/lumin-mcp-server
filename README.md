@@ -1,6 +1,6 @@
 # Lumin PDF MCP Server
 
-This is an MCP (Model Context Protocol) server for integrating with Lumin PDF's API services. It allows AI assistants (MCP clients, e.g Claude Desktop) to interact with Lumin PDF features such as document management, signature requests, and user information.
+This is an MCP (Model Context Protocol) server for integrating with Lumin's API services. It allows AI assistants (MCP clients, e.g Claude Desktop, Cursor) to interact with Lumin features such as document management, signature requests, and user information.
 
 ## Features
 
@@ -11,27 +11,31 @@ This MCP server implements the following Lumin PDF API tools:
 - **send-signature-request**: Create and send a new signature request with documents
 
 ## Setup
+1. Get the Lumin API key. 
+You can follow this [guide](https://developers.luminpdf.com/docs/api-key) to get the API key.
+2. Clone the repository
+```bash
+git clone https://github.com/luminpdf/lumin-mcp-server.git
+```
 
-1. Install dependencies:
+3. Install dependencies:
 ```bash
 npm install
 ```
-2. Build the server:
+
+4. Build the server:
 ```bash
 npm run build
 ```
 
-## Usage with Claude
-
-On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`  
-On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+## Configuration
 
 ```
 "mcpServers": {
   "lumin": {
     "command": "node",
     "args": [
-          "/Users/sonle/Workspace/DSV/lumin/mcp-lumin/build/index.js"
+          "<absolute-path>/lumin-mcp-server/build/index.js"
       ],
     "env": {
       "LUMIN_API_KEY": "your-lumin-api-key"
@@ -40,7 +44,17 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 }
 ```
 
-### Examples
+## Usage with Claude
+[Configuration](https://docs.cursor.com/context/model-context-protocol#configuration-locations) Locations:
+- On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`  
+- On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+
+## Usage with Cursor
+[Configuration](https://docs.cursor.com/context/model-context-protocol#configuration-locations) Locations:
+- Project Configuration: create a `.cursor/mcp.json` file in your project directory (the MCP server will only be available within that specific project)
+- Global Configuration: create a `\~/.cursor/mcp.json` file in your home directory (this makes the MCP server available in all your Cursor workspaces.)
+
+## Examples
 
 #### Get User Information
 ```
@@ -49,7 +63,7 @@ Get my user information from Lumin
 
 #### Cancel a Signature Request
 ```
-Cancel my signature request with ID: abc123
+Cancel my signature request with ID: my-signature-request-id
 ```
 
 #### Send a Signature Request
@@ -58,20 +72,11 @@ Send a signature request with the following details:
 - Title: Contract Agreement
 - Signers: john@example.com (John Doe), mary@example.com (Mary Smith)
 - Expiry: 7 days from now
-- File URL: (public url to the document) (this mechanism will be improved in the future)
+- File URL: (public url to the document) (this mechanism will be improved in the near future)
 ```
 
 ## API Documentation
 
-For more information about the Lumin PDF API, visit the [Lumin PDF API Documentation](https://developers.luminpdf.com/api/).
+For more information about the Lumin APIs, visit the [Lumin API Documentation](https://developers.luminpdf.com/api/).
 
-## Usage with Cursor
-### Environment Configuration
 
-Create a `.env` file in the root directory with the following configuration:
-
-```
-LUMIN_API_KEY=your-lumin-api-key
-```
-
-I tried using the normal index.js file with cursor MCP, but it was not working. So I made the cursor-mcp.cjs file. Its possible the index.js file was not working due to bad path in mcp.json though
