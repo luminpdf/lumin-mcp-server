@@ -259,7 +259,7 @@ server.tool(
       name: z.string()
     })).optional().describe("List of viewers for the document (optional)"),
 
-    expires_at: z.number().describe("Unix timestamp (milliseconds) when the request will expire. Should be later than today."),
+    expires_at: z.number().describe("Unix epoch timestamp (in milliseconds) describing when the request will expire. Should be later than today (current timestamp). If the provided input is a relative time (e.g 'in 3 days'), it should be converted to an absolute timestamp in milliseconds."),
 
     use_text_tags: z.boolean().optional().default(false)
       .describe("Set to true to enable Text Tag parsing in your document. Defaults to false."),
