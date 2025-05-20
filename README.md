@@ -45,7 +45,7 @@ npm run build
 ```
 
 ## Usage with Claude
-[Configuration](https://docs.cursor.com/context/model-context-protocol#configuration-locations) Locations:
+[Configuration](https://modelcontextprotocol.io/quickstart/user) Locations:
 - On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`  
 - On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
@@ -72,7 +72,7 @@ Send a signature request with the following details:
 - Title: Contract Agreement
 - Signers: john@example.com (John Doe), mary@example.com (Mary Smith)
 - Expiry: 7 days from now
-- File URL: (public url to the document) (this mechanism will be improved in the near future)
+- File URL: https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf (public URL to the document - this mechanism will be improved in the future)
 ```
 
 ## API Documentation
