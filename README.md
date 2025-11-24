@@ -6,53 +6,44 @@ This is an MCP (Model Context Protocol) server for integrating with Lumin's API 
 
 This MCP server implements the following Lumin PDF API tools:
 
-- **get-user-information**: Retrieve information about the current user using the API key
-- **cancel-signature-request**: Cancel an existing signature request
-- **send-signature-request**: Create and send a new signature request with documents
+- **get-lumin-user-information**: Retrieve information about the current user
+- **get-signature-request-on-lumin-by-id**: Get details of a signature request by ID
+- **cancel-signature-request-on-lumin-by-id**: Cancel an existing signature request
+- **send-signature-request-on-lumin**: Create and send a new signature request with documents
+- **upload-file-to-lumin**: Upload a file to Lumin
+- **get-workspace-list-of-user-on-lumin**: Get the list of workspaces for the current user
+- **lumin-markdown2pdf**: Convert Markdown to PDF using Lumin
 
-## Setup
-1. Get the Lumin API key. 
-You can follow this [guide](https://developers.luminpdf.com/docs/api-key) to get the API key.
-2. Clone the repository
-```bash
-git clone https://github.com/luminpdf/lumin-mcp-server.git
-```
+## Installation
 
-3. Install dependencies:
-```bash
-npm install
-```
+### Cursor Users
+If you already have Cursor installed, simply open this link to install the integration.
 
-4. Build the server:
-```bash
-npm run build
-```
+### Claude Users
+Add the following configuration to your `claude_desktop_config.json` file:
 
-## Configuration
+**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
+**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
 
-```
-"mcpServers": {
-  "lumin": {
-    "command": "node",
-    "args": [
-          "<absolute-path>/lumin-mcp-server/build/index.js"
-      ],
-    "env": {
-      "LUMIN_API_KEY": "your-lumin-api-key"
+```json
+{
+  "mcpServers": {
+    "lumin": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.luminpdf.com/mcp"]
     }
   }
 }
 ```
 
-## Usage with Claude
-[Configuration](https://modelcontextprotocol.io/quickstart/user) Locations:
-- On MacOS: `~/Library/Application\ Support/Claude/claude_desktop_config.json`  
-- On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+Installation instructions for other MCP clients will be provided soon.
 
-## Usage with Cursor
-[Configuration](https://docs.cursor.com/context/model-context-protocol#configuration-locations) Locations:
-- Project Configuration: create a `.cursor/mcp.json` file in your project directory (the MCP server will only be available within that specific project)
-- Global Configuration: create a `\~/.cursor/mcp.json` file in your home directory (this makes the MCP server available in all your Cursor workspaces.)
+## Troubleshooting
+
+If you encounter issues during installation with Cursor, try clearing cached credentials located at:
+```
+/Users/<your-username>/.mcp-auth/
+```
 
 ## Examples
 
@@ -78,5 +69,4 @@ Send a signature request with the following details:
 ## API Documentation
 
 For more information about the Lumin APIs, visit the [Lumin API Documentation](https://developers.luminpdf.com/api/).
-
 
