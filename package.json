@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "tsc && node build/http.js"
   },
   "files": [
     "build"
@@ -13,12 +14,20 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/node": "^22.10.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.19.2",
+    "dotenv": "^17.2.3",
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.4.0",
-    "dotenv": "^16.4.7",
-    "zod": "^3.24.2"
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "@ory/client": "^1.20.11",
+    "axios": "^1.9.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "form-data": "^4.0.5",
+    "nanoid": "^5.1.5",
+    "node-fetch": "^3.3.2",
+    "zod": "^4.1.13"
   }
 }

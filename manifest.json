@@ -1,0 +1,81 @@
+{
+  "manifest_version": "0.2",
+  "name": "Lumin",
+  "version": "0.0.1",
+  "description": "Smarter Workflows for Files and Signatures",
+  "long_description": "This extension empowers developers to build smarter, more automated document workflows. Access user profiles, browse workspaces, and manage signature requests from start to finish—sending, retrieving, or canceling with ease. Upload documents on demand and convert Markdown into high-quality PDFs in seconds. Designed for seamless integration, these tools reduce friction and simplify how files, signatures, and collaboration flow through any Model Context Protocol–powered system.",
+  "author": {
+    "name": "Lumin",
+    "email": "integration@luminpdf.com",
+    "url": "https://luminpdf.com"
+  },
+  "homepage": "https://luminpdf.com",
+  "documentation": "https://developers.luminpdf.com/docs/mcp/connect/",
+  "support": "https://help.luminpdf.com/",
+  "privacy_policies": ["https://www.luminpdf.com/privacy-policy/"],
+  "icon": "./i-512.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luminpdf/lumin-mcp-server.git"
+  },
+  "screenshots": [],
+  "server": {
+    "type": "node",
+    "entry_point": "${__dirname}/stdio.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/stdio.js"
+      ],
+      "env": {
+        "LUMIN_API_KEY": "${user_config.api_key}",
+        "LUMIN_API_URL": "https://api.luminpdf.com"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "get_lumin_user_information",
+      "description": "Get information of current user on Lumin"
+    },
+    {
+      "name": "get_signature_request_on_lumin_by_id",
+      "description": "Get Signature Request by id on Lumin"
+    },
+    {
+      "name": "cancel_signature_request_on_lumin_by_id",
+      "description": "Cancel Signature Request by id on Lumin"
+    },
+    {
+      "name": "send_signature_request_on_lumin",
+      "description": "Creates and sends a new Signature Request with the submitted documents"
+    },
+    {
+      "name": "get_workspace_list_of_user_on_lumin",
+      "description": "Get Workspace List of User on Lumin"
+    },
+    {
+      "name": "upload_file_to_lumin",
+      "description": "Upload a file to Lumin"
+    },
+    {
+      "name": "lumin_markdown2pdf",
+      "description": "Converts markdown template to PDF url"
+    }
+  ],
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "API Key",
+      "description": "Your API key for authentication",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "keywords": [
+    "productivity",
+    "signing",
+    "pdf"
+  ],
+  "license": "MIT"
+}
